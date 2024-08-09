@@ -12,7 +12,7 @@
 - 安装依赖包：`pip install -r requirements.txt`
 
 ## 快速开始
-1. 待标注的数据集文件是[input_file.jsonl](data/input_file.jsonl)。里面的数据如下：
+1. 待标注的数据集文件是[/data/input_file.jsonl](data/input_file.jsonl)。里面的数据如下：
 ```
 {"question": "How are you doing?", "response": ["I am good", "I am bad","Terrible","Mind your own business"],"reference":"Normally the answer should be nice."}
 {"question": "who are you?", "response": ["LLM", "Apple","Banana","Sea"], "reference":"This chatbot should be a robot or something."}

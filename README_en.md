@@ -21,7 +21,7 @@ Please replace it with your own data, keep the file name unchanged.
 streamlit run app.py --server.port 8080
 ```
 4. **You can only pick one Accept and one Reject for each question**, and if you pick dismiss for all the responses, this question will not be included in the final result file.
-5. Click `Save`, the result file will be saved as `/data/output_result.jsonl`。
+5. Click `Save`, the result will be saved to `/data/output_result.jsonl`。
 
 
 ## Thank

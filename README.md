@@ -24,7 +24,7 @@
 streamlit run app.py --server.port 8080
 ```
 3. 每条数据只能选1个Accept和1个Reject，假如全部选dismiss，这条数据会被丢弃，除非你再改回来。
-4. 点`Save`，结果保持为`/data/output_result.jsonl`。
+4. 点`Save`，结果保存为`/data/output_result.jsonl`。
 ## 贡献与许可
 
 致谢：https://github.com/SupritYoung/RLHF-Label-Tool

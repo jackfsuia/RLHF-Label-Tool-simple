@@ -9,7 +9,7 @@ A simple version of [RLHF-Label-Tool](https://github.com/SupritYoung/RLHF-Label-
 ## Quick Start
 1. Install the depencies with `pip install -r requirements.txt`.
 
-2. The dataset to be labeled is [input_file.jsonl](data/input_file.jsonl):
+2. The dataset to be labeled is [/data/input_file.jsonl](data/input_file.jsonl):
 ```
 {"question": "How are you doing?", "response": ["I am good", "I am bad","Terrible","Mind your own business"],"reference":"Normally the answer should be nice."}
 {"question": "who are you?", "response": ["LLM", "Apple","Banana","Sea"], "reference":"This chatbot should be a robot or something."}

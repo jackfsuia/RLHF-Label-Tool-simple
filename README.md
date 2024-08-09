@@ -1,62 +1,32 @@
-# RLHF 标注工具
+# RLHF 标注工具-简化版
+[English](README_en.md)
 
-在大模型训练的 RLHF 阶段，需要人工对模型生成的多份数据进行标注排序，然而目前缺乏开源可用的 RLHF 标注平台。
+是[RLHF-Label-Tool](https://github.com/SupritYoung/RLHF-Label-Tool)的一个简化版。RLHF-Label-Tool是一个偏好数据集标注工具。
 
-RLHF 标注工具 是一个简单易用的，可以在大模型进行 RLHF（基于人类反馈的强化学习）标注排序的工具，旨在帮助用户在友好的图形界面中对生成式模型生成的答案进行排序标注。
+**项目截图：**
+<img width="1206" alt="image" src="project.PNG">
 
-项目截图：
-<img width="1206" alt="image" src="https://github.com/SupritYoung/RLHF-Label-Tool/assets/30597946/d35b028c-d5c0-4769-a952-c2299357586f">
-
-
-## 功能特点
-- 提供界面展示当前的查询问题和历史对话
-- 支持为生成的答案选择排名
-- 可以自定义回答个数 K，默认为 4
-- 自动检测和提示排名冲突
-- 将标注的排序结果追加保存到数据集文件中
-- 提供数据集页面以查看已标注的数据
-
-## 后续计划
-
-- [ ] 实现 RLAIF ，基于 API 进行自动标注
-- [ ] 支持拖动排序
 
 ## 安装依赖
 - Python 3.x
 - 安装依赖包：`pip install -r requirements.txt`
 
-## 使用说明
-1. 准备数据集文件：将包含查询问题、历史对话和生成的答案的数据集文件准备为 JSON 格式，格式参见 input_file.json。
-   对于 RLHF 数据的生成，直接对同一份模型运行 K 次即可。由于大模型的随机性，每次生成的答案都会不同。
-3. 运行应用：执行 `bash run.sh` 命令启动应用。
-4. 标注排序：在标注页面，依次为每个查询问题的生成答案选择排名，并点击“存储当前排序”按钮保存标注结果。
-5. 查看数据集：在数据集页面，可以查看已标注的数据集，包括查询问题、历史对话和生成的答案的排序结果。
-
-## 配置
-应用支持一些配置选项，可在 `app.py` 文件中进行修改：
-- `MODEL_CONFIG`：模型配置，包括模型名称、设备、数据集文件路径等。
-- `RANK_COLOR`：排名颜色列表，用于在界面中显示不同排名的颜色。
-
-## 示例数据集
-您可以使用以下 JSON 数据集示例进行测试：
-```json
-{
-    "0": {
-        "query": "非常感谢您的建议，我会尽量按照您的建议来做。谢谢！",
-        "history": [],
-        "response_0": "不客气，我很高兴能够帮助到您。如果您还有其他问题，随时可以向我咨询。祝您好运！",
-        "response_1": "不客气，我很高兴能够帮助您。如果您还有其他问题，随时都可以向我咨询。祝您好运！",
-        "response_2": "不客气，我很高兴能够帮助您。如果您有任何其他问题，随时都可以向我咨询。祝您好运！",
-        "response_3": "不客气，我很高兴能够帮助到您。如果您还有其他问题，随时可以向我咨询。祝您好运！"
-    },
-    ...
-}
+## 快速开始
+1. 待标注的数据集文件是[input_file.jsonl](data/input_file.jsonl)。里面的数据如下：
 ```
+{"question": "How are you doing?", "response": ["I am good", "I am bad","Terrible","Mind your own business"],"reference":"Normally the answer should be nice."}
+{"question": "who are you?", "response": ["LLM", "Apple","Banana","Sea"], "reference":"This chatbot should be a robot or something."}
+```
+请按上述格式将此文件替换成你的待标注数据集，文件位置和命名保持不变。
 
+2. 当前目录下，运行下面命令
+```bash
+streamlit run app.py --server.port 8080
+```
+3. 每条数据只能选1个Accept和1个Reject，假如全部选dismiss，这条数据会被丢弃，除非你再改回来。
+4. 点`Save`，结果保持为`/data/output_result.jsonl`。
 ## 贡献与许可
 
-致谢：https://github.com/HarderThenHarder/transformers_tasks/tree/main/RLHF
-
-欢迎提供问题反馈、改进建议和贡献代码。请通过 GitHub 提交问题和拉取请求。
+致谢：https://github.com/SupritYoung/RLHF-Label-Tool
 
 本项目基于 MIT License 进行发布和授权。
